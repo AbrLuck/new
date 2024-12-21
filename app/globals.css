@@ -2,6 +2,118 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes roll {
+  0% { 
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% { 
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(calc(500%)) translateY(0%) rotate(720deg);
+    opacity: 0;
+  }
+}
+@keyframes roll1 {
+  0% { 
+    transform: translateX(20) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% { 
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(calc(1470%)) translateY(80%);
+  }
+  90% {
+    transform: translateX(calc(1470%)) translateY(200%);
+  }
+  100% {
+    transform: translateX(calc(1470%)) translateY(200%);
+    opacity: 0;
+  }
+}
+
+
+.animate-roll1 {
+  animation: roll 5s ease-in-out infinite;
+}
+.animate-roll2 {
+  animation: roll1 4s ease-in-out  infinite;
+}
+.animate-roll3 {
+  animation: roll 4s ease-in-out 2s infinite;
+}
+.animate-roll4 {
+  animation: roll 4s ease-in-out 3s infinite;
+}
+@keyframes slideRight1 {
+  0% {
+    opacity: 1;
+    transform: translateX(-200%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(1400%);
+  }
+}
+@keyframes slideRight2 {
+  0% {
+    opacity: 1;
+    transform: translateX(-400%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(1200%);
+  }
+}
+@keyframes slideRight3 {
+  0% {
+    opacity: 1;
+    transform: translateX(-600%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(1000%);
+  }
+}
+@keyframes slideRight4 {
+  0% {
+    opacity: 1;
+    transform: translateX(-800%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(800%);
+  }
+}
+.slide-right1{
+  animation: slideRight1 4s ease-out infinite;
+}
+.slide-right2{
+  animation: slideRight2 4s ease-out infinite;
+}
+.slide-right3{
+  animation: slideRight3 4s ease-out infinite;
+}
+.slide-right4{
+  animation: slideRight4 4s ease-out infinite;
+}
+.delay-1 {
+  animation-delay: 6000ms;
+}
+.delay-2 {
+  animation-delay: 4000ms;
+}
+.delay-3 {
+  animation-delay: 2000ms;
+}
+.delay-4 {
+  animation-delay: 0;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -18,4 +130,89 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  
+}
+@layer utilities {
+  .roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }  
+}
+h3{
+  font-family: verdana;
+  color: orange;
+  font-weight: bold;
+}
+h2{
+  font-family:Cal;
+  color: rgb(0, 35, 130);
+  font-weight: bold;
+  font-size: 30px;
 }
