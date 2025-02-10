@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
-import { FaPlane, FaShip, FaTruck, FaCalculator, FaFileContract, FaWarehouse } from 'react-icons/fa';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import { useLanguage } from '@/app/layout/LanguageContext';
