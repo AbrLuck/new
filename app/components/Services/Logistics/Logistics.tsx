@@ -49,7 +49,7 @@ const LogisticPage = () => {
             content: (
                 <div>
                     <h3 className="font-semibold text-lg">{t.transport.road.title}</h3>
-                    <p>{t.transport.road.details}</p>
+                    <p>{t.transport.road.description}</p>
                     <a href="/other-road-info" className="text-blue-500 hover:underline">Xem thêm thông tin về vận tải đường bộ</a>
                 </div>
             ),
@@ -198,7 +198,7 @@ const LogisticPage = () => {
             content: (
                 <div>
                     <h3 className="font-semibold text-lg">{t.freight.title}</h3>
-                    <p>{t.freight.details}</p>
+                    <p>{t.freight.description}</p>
                     <a href="/other-freight-info" className="text-blue-500 hover:underline">Xem thêm thông tin về cước phí</a>
                 </div>
             ),
@@ -212,7 +212,7 @@ const LogisticPage = () => {
             content: (
                 <div>
                     <h3 className="font-semibold text-lg">{t.customs.title}</h3>
-                    <p>{t.customs.details}</p>
+                    <p>{t.customs.description}</p>
                     <a href="/other-customs-info" className="text-blue-500 hover:underline">Xem thêm thông tin về hải quan</a>
                 </div>
             ),
@@ -226,7 +226,7 @@ const LogisticPage = () => {
             content: (
                 <div>
                     <h3 className="font-semibold text-lg">{t.warehouse.title}</h3>
-                    <p>{t.warehouse.details}</p>
+                    <p>{t.warehouse.description}</p>
                     <a href="/other-warehouse-info" className="text-blue-500 hover:underline">Xem thêm thông tin về kho bãi</a>
                 </div>
             ),
