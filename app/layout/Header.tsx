@@ -110,21 +110,20 @@ const Header: React.FC = () => {
                         {isSolutionsOpen && !isOpen && (
                             <div className="absolute left-0 pl-2 py-2 bg-white text-black hidden md:block min-w-[154px]">
                                 <ul className="space-y-2">
-                                    {/* Logistics */}
-                                    <Link href="/service/logistic">
-                                        <li className="flex items-center p-2 text-left hover:text-orange-400 hover:translate-x-2 transition-all duration-700">
-                                            <div className="flex items-center group">
-                                                <FaTruck className='mr-2' /> {t.logistics}
-                                                <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">→</span>
-                                            </div>
-                                        </li>
-                                    </Link>
-
                                     {/* Lĩnh vực */}
                                     <Link href="/service/trading">
                                         <li className="flex items-center p-2 text-left hover:text-orange-400 hover:translate-x-2 transition-all duration-700">
                                             <div className="flex items-center group">
                                                 <FaChartLine className='mr-2' /> {t.trading}
+                                                <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">→</span>
+                                            </div>
+                                        </li>
+                                    </Link>
+                                    {/* Logistics */}
+                                    <Link href="/service/logistic">
+                                        <li className="flex items-center p-2 text-left hover:text-orange-400 hover:translate-x-2 transition-all duration-700">
+                                            <div className="flex items-center group">
+                                                <FaTruck className='mr-2' /> {t.logistics}
                                                 <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">→</span>
                                             </div>
                                         </li>

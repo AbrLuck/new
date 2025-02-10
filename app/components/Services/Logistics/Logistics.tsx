@@ -13,13 +13,15 @@ interface SolutionCategory {
     label: string;
     icon: JSX.Element;
     subCategories?: SolutionCategory[];
+    image: string;
+    description: string;
+    content: JSX.Element;
 }
 
 const LogisticPage = () => {
     const searchParams = useSearchParams();
     const [activeSolution, setActiveSolution] = useState('');
     const [activeSubSolution, setActiveSubSolution] = useState('');
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { language } = useLanguage();
     const t = logisticsTranslations[language];
 
@@ -39,201 +41,455 @@ const LogisticPage = () => {
 
     const solutions: SolutionCategory[] = [
         {
-            id: 'transport',
-            label: t.transport.title,
+            id: 'road',
+            label: t.transport.road.title,
             icon: <FaTruck className="mr-2" />,
-            subCategories: [
-                { id: 'road', label: t.transport.road.title, icon: <FaTruck className="mr-2" /> },
-                { id: 'sea', label: t.transport.sea.title, icon: <FaShip className="mr-2" /> },
-                { id: 'air', label: t.transport.air.title, icon: <FaPlane className="mr-2" /> },
-                { id: 'multimodal', label: t.transport.multimodal.title, icon: <FaExchangeAlt className="mr-2" /> }
-            ]
+            image: '/images/road-transport.jpg',
+            description: t.transport.road.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.transport.road.title}</h3>
+                    <p>{t.transport.road.details}</p>
+                    <a href="/other-road-info" className="text-blue-500 hover:underline">Xem thêm thông tin về vận tải đường bộ</a>
+                </div>
+            ),
         },
-        { id: 'freight', label: t.freight.title, icon: <FaCalculator className="mr-2" /> },
-        { id: 'customs', label: t.customs.title, icon: <FaFileContract className="mr-2" /> },
-        { id: 'warehouse', label: t.warehouse.title, icon: <FaWarehouse className="mr-2" /> }
+        {
+            id: 'sea',
+            label: t.transport.sea.title,
+            icon: <FaShip className="mr-2" />,
+            image: '/images/sea-transport.jpg',
+            description: t.transport.sea.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.transport.sea.title}</h3>
+                    <p>{t.transport.road.description}</p>
+                    <ul className="list-disc ml-6 mt-2">
+                        {t.transport.sea.services.map((service, index) => (
+                            <li key={index}>{service}</li>
+                        ))}
+                    </ul>
+                    <a href="/other-sea-info" className="text-blue-500 hover:underline">Xem thêm thông tin về vận tải đường biển</a>
+                    <br />
+                    <div className="mt-4">
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('road')}
+                        >
+                            Vận tải đường bộ
+                        </a>
+                        <span className="mx-2">|</span>
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('air')}
+                        >
+                            Vận tải hàng không
+                        </a>
+                        <span className="mx-2">|</span>
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('multimodal')}
+                        >
+                            Vận tải đa phương thức
+                        </a>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            id: 'air',
+            label: t.transport.air.title,
+            icon: <FaPlane className="mr-2" />,
+            image: '/images/air-transport.jpg',
+            description: t.transport.air.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.transport.air.title}</h3>
+                    <p>{t.transport.road.description}</p>
+                    <ul className="list-disc ml-6 mt-2">
+                        {t.transport.air.services.map((service, index) => (
+                            <li key={index}>{service}</li>
+                        ))}
+                    </ul>
+                    <a href="/other-air-info" className="text-blue-500 hover:underline">Xem thêm thông tin về vận tải hàng không</a>
+                    <br />
+                    <div className="mt-4">
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('road')}
+                        >
+                            Vận tải đường bộ
+                        </a>
+                        <span className="mx-2">|</span>
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('sea')}
+                        >
+                            Vận tải đường biển
+                        </a>
+                        <span className="mx-2">|</span>
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('multimodal')}
+                        >
+                            Vận tải đa phương thức
+                        </a>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            id: 'multimodal',
+            label: t.transport.multimodal.title,
+            icon: <FaExchangeAlt className="mr-2" />,
+            image: '/images/multimodal-transport.jpg',
+            description: t.transport.multimodal.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.transport.multimodal.title}</h3>
+                    <p>{t.transport.road.description}</p>
+                    <ul className="list-disc ml-6 mt-2">
+                        {t.transport.multimodal.services.map((service, index) => (
+                            <li key={index}>{service}</li>
+                        ))}
+                    </ul>
+                    <a href="/other-multimodal-info" className="text-blue-500 hover:underline">Xem thêm thông tin về vận tải đa phương thức</a>
+                    <br />
+                    <div className="mt-4">
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('road')}
+                        >
+                            Vận tải đường bộ
+                        </a>
+                        <span className="mx-2">|</span>
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('sea')}
+                        >
+                            Vận tải đường biển
+                        </a>
+                        <span className="mx-2">|</span>
+                        <a 
+                            href="#" 
+                            className="text-blue-500 hover:underline" 
+                            onClick={() => setActiveSolution('air')}
+                        >
+                            Vận tải hàng không
+                        </a>
+                    </div>
+                </div>
+            ),
+        },
+        {
+            id: 'freight',
+            label: t.freight.title,
+            icon: <FaCalculator className="mr-2" />,
+            image: '/images/freight.jpg',
+            description: t.freight.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.freight.title}</h3>
+                    <p>{t.freight.details}</p>
+                    <a href="/other-freight-info" className="text-blue-500 hover:underline">Xem thêm thông tin về cước phí</a>
+                </div>
+            ),
+        },
+        {
+            id: 'customs',
+            label: t.customs.title,
+            icon: <FaFileContract className="mr-2" />,
+            image: '/images/customs.jpg',
+            description: t.customs.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.customs.title}</h3>
+                    <p>{t.customs.details}</p>
+                    <a href="/other-customs-info" className="text-blue-500 hover:underline">Xem thêm thông tin về hải quan</a>
+                </div>
+            ),
+        },
+        {
+            id: 'warehouse',
+            label: t.warehouse.title,
+            icon: <FaWarehouse className="mr-2" />,
+            image: '/images/warehouse.jpg',
+            description: t.warehouse.description,
+            content: (
+                <div>
+                    <h3 className="font-semibold text-lg">{t.warehouse.title}</h3>
+                    <p>{t.warehouse.details}</p>
+                    <a href="/other-warehouse-info" className="text-blue-500 hover:underline">Xem thêm thông tin về kho bãi</a>
+                </div>
+            ),
+        },
     ];
 
     const renderContent = () => {
         switch (activeSolution) {
-            case 'transport':
-                switch (activeSubSolution) {
-                    case 'road':
-                        return (
-                            <>
-                                <div className="w-full md:w-1/3">
-                                    <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <Image 
-                                            src="/images/road-transport.jpg" 
-                                            alt="Vận tải đường bộ"
-                                            className="w-full h-full object-cover rounded-lg"
-                                            width={500}
-                                            height={300}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-2/3">
-                                    <div className="text-xl font-bold mb-4 text-indigo-700">
-                                        {t.transport.road.pageTitle}
-                                    </div>
-                                    <p>{t.transport.road.description}</p>
-                                    <ul className="list-disc ml-6 mt-2">
-                                        <li>{t.transport.road.services[0]}</li>
-                                        <li>{t.transport.road.services[1]}</li>
-                                        <li>{t.transport.road.services[2]}</li>
-                                    </ul>
-                                </div>
-                            </>
-                        );
-                    case 'sea':
-                        return (
-                            <>
-                                <div className="w-full md:w-1/3">
-                                    <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <Image 
-                                            src="/images/sea-transport.jpg" 
-                                            alt="Vận tải đường biển"
-                                            className="w-full h-full object-cover rounded-lg"
-                                            width={500}
-                                            height={300}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-2/3">
-                                    <div className="text-xl font-bold mb-4 text-indigo-700">
-                                        {t.transport.sea.pageTitle}
-                                    </div>
-                                    <p>{t.transport.sea.description}</p>
-                                    <ul className="list-disc ml-6 mt-2">
-                                        <li>{t.transport.sea.services[0]}</li>
-                                        <li>{t.transport.sea.services[1]}</li>
-                                        <li>{t.transport.sea.services[2]}</li>
-                                        <li>{t.transport.sea.services[3]}</li>
-                                    </ul>
-                                </div>
-                            </>
-                        );
-                    case 'air':
-                        return (
-                            <>
-                                <div className="w-full md:w-1/3">
-                                    <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <Image 
-                                            src="/images/air-transport.jpg" 
-                                            alt="Vận tải đường hàng không"
-                                            className="w-full h-full object-cover rounded-lg"
-                                            width={500}
-                                            height={300}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-2/3">
-                                    <div className="text-xl font-bold mb-4 text-indigo-700">
-                                        {t.transport.air.pageTitle}
-                                    </div>
-                                    <p>{t.transport.air.description}</p>
-                                    <ul className="list-disc ml-6 mt-2">
-                                        <li>{t.transport.air.services[0]}</li>
-                                        <li>{t.transport.air.services[1]}</li>
-                                        <li>{t.transport.air.services[2]}</li>
-                                        <li>{t.transport.air.services[3]}</li>
-                                        <li>{t.transport.air.services[4]}</li>
-                                    </ul>
-                                </div>
-                            </>
-                        );
-                    case 'multimodal':
-                        return (
-                            <>
-                                <div className="w-full md:w-1/3">
-                                    <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <Image 
-                                            src="/images/multimodal-transport.jpg" 
-                                            alt="Vận tải đa phương thức"
-                                            className="w-full h-full object-cover rounded-lg"
-                                            width={500}
-                                            height={300}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="w-full md:w-2/3">
-                                    <div className="text-xl font-bold mb-4 text-indigo-700">
-                                        {t.transport.multimodal.pageTitle}
-                                    </div>
-                                    <p>{t.transport.multimodal.description}</p>
-                                    <ul className="list-disc ml-6 mt-2">
-                                        <li>{t.transport.multimodal.services[0]}</li>
-                                        <li>{t.transport.multimodal.services[1]}</li>
-                                        <li>{t.transport.multimodal.services[2]}</li>
-                                        <li>{t.transport.multimodal.services[3]}</li>
-                                        <li>{t.transport.multimodal.services[4]}</li>
-                                        <li>{t.transport.multimodal.services[5]}</li>
-                                    </ul>
-                                </div>
-                            </>
-                        );
-                    default:
-                        return (
-                            <div>
-                                <div className="">
-                                    <Image 
-                                        src="/solutions.png" 
-                                        alt="Tổng quan vận chuyển"
-                                        className="w-full rounded-lg"
-                                        width={500}
-                                        height={300}
-                                    />
-                                </div>
-                                <div className="w-full">
-                                    <div className="text-2xl font-bold my-4 text-indigo-700">
-                                        {t.overview.title}
-                                    </div>
-                                    <p className="mb-4">
-                                        {t.overview.description}
-                                    </p>
-                                    <div className="space-y-6 p-4 roboto-thin">
-                                        <div>
-                                            <h3 className="font-semibold text-lg mb-2">{t.overview.services.road.title}</h3>
-                                            <p className="text-gray-600 ml-4">
-                                                - {t.overview.services.road.description}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-semibold text-lg mb-2">{t.overview.services.sea.title}</h3>
-                                            <p className="text-gray-600 ml-4">
-                                                - {t.overview.services.sea.description}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-semibold text-lg mb-2">{t.overview.services.air.title}</h3>
-                                            <p className="text-gray-600 ml-4">
-                                                - {t.overview.services.air.description}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-semibold text-lg mb-2">{t.overview.services.multimodal.title}</h3>
-                                            <p className="text-gray-600 ml-4">
-                                                - {t.overview.services.multimodal.description}
-                                            </p>
-                                        </div>
-                                        <div className="mt-6">
-                                            <h3 className="font-semibold text-lg mb-2">{t.advantages.title}</h3>
-                                            <ul className="list-disc ml-6 space-y-2 text-gray-600">
-                                                {t.advantages.items.map((item, index) => (
-                                                    <li key={index}>{item}</li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                        <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                                            <p className="text-blue-700">
-                                                {t.menuPrompt}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+            case 'road':
+                return (
+                    <>
+                        <div className="w-full md:w-1/3">
+                            <div className="aspect-square bg-gray-200 rounded-lg">
+                                <Image 
+                                    src="/images/road-transport.jpg" 
+                                    alt="Vận tải đường bộ"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
+                                />
                             </div>
-                        );
-                }
+                        </div>
+                        <div className="w-full md:w-2/3">
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                {t.transport.road.pageTitle}
+                            </div>
+                            <p>{t.transport.road.description}</p>
+                            <ul className="list-disc ml-6 mt-2">
+                                {t.transport.road.services.map((service, index) => (
+                                    <li key={index}>{service}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('sea')}
+                            >
+                                Vận tải đường biển
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('air')}
+                            >
+                                Vận tải hàng không
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('multimodal')}
+                            >
+                                Vận tải đa phương thức
+                            </a>
+                        </div>
+                    </>
+                );
+            case 'sea':
+                return (
+                    <>
+                        <div className="w-full md:w-1/3">
+                            <div className="aspect-square bg-gray-200 rounded-lg">
+                                <Image 
+                                    src="/images/sea-transport.jpg" 
+                                    alt="Vận tải đường biển"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
+                                />
+                            </div>
+                        </div>
+                        <div className="w-full md:w-2/3">
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                {t.transport.sea.pageTitle}
+                            </div>
+                            <p>{t.transport.road.description}</p>
+                            <ul className="list-disc ml-6 mt-2">
+                                {t.transport.sea.services.map((service, index) => (
+                                    <li key={index}>{service}</li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('road')}
+                            >
+                                Vận tải đường bộ
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('air')}
+                            >
+                                Vận tải hàng không
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('multimodal')}
+                            >
+                                Vận tải đa phương thức
+                            </a>
+                        </div>
+                    </>
+                );
+            case 'air':
+                return (
+                    <>
+                        <div className="w-full md:w-1/3">
+                            <div className="aspect-square bg-gray-200 rounded-lg">
+                                <Image 
+                                    src="/images/air-transport.jpg" 
+                                    alt="Vận tải đường hàng không"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
+                                />
+                            </div>
+                        </div>
+                        <div className="w-full md:w-2/3">
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                {t.transport.air.pageTitle}
+                            </div>
+                            <p>{t.transport.road.description}</p>
+                            <ul className="list-disc ml-6 mt-2">
+                                {t.transport.air.services.map((service, index) => (
+                                    <li key={index}>{service}</li>
+                                ))}
+                            </ul>
+                            
+                        </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('road')}
+                            >
+                                Vận tải đường bộ
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('sea')}
+                            >
+                                Vận tải đường biển
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('multimodal')}
+                            >
+                                Vận tải đa phương thức
+                            </a>
+                        </div>
+                    </>
+                );
+            case 'multimodal':
+                return (
+                    <>
+                        <div className="w-full md:w-1/3">
+                            <div className="aspect-square bg-gray-200 rounded-lg">
+                                <Image 
+                                    src="/images/multimodal-transport.jpg" 
+                                    alt="Vận tải đa phương thức"
+                                    className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
+                                />
+                            </div>
+                        </div>
+                        <div className="w-full md:w-2/3">
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                {t.transport.multimodal.pageTitle}
+                            </div>
+                            <p>{t.transport.road.description}</p>
+                            <ul className="list-disc ml-6 mt-2">
+                                {t.transport.multimodal.services.map((service, index) => (
+                                    <li key={index}>{service}</li>
+                                ))}
+                            </ul>
+                            
+                        </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('road')}
+                            >
+                                Vận tải đường bộ
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('sea')}
+                            >
+                                Vận tải đường biển
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('air')}
+                            >
+                                Vận tải hàng không
+                            </a>
+                        </div>
+                    </>
+                );
+                    
             case 'freight':
                 return (
                     <>
@@ -258,6 +514,42 @@ const LogisticPage = () => {
                                     <li key={index}>{service}</li>
                                 ))}
                             </ul>
+                        </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('road')}
+                            >
+                                Vận tải đường bộ
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('sea')}
+                            >
+                                Vận tải đường biển
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('air')}
+                            >
+                                Vận tải hàng không
+                            </a>
                         </div>
                     </>
                 );
@@ -287,6 +579,42 @@ const LogisticPage = () => {
                                     <li key={index}>{service}</li>
                                 ))}
                             </ul>
+                        </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('road')}
+                            >
+                                Vận tải đường bộ
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('sea')}
+                            >
+                                Vận tải đường biển
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('air')}
+                            >
+                                Vận tải hàng không
+                            </a>
                         </div>
                     </>
                 );
@@ -320,72 +648,73 @@ const LogisticPage = () => {
                                 <p className="text-blue-700">{t.warehousing.facilityNote}</p>
                             </div>
                         </div>
+                        <div className='pt-6'>
+                            <div className="text-xl font-bold mb-4 text-indigo-700">
+                                Xem thêm
+                            </div>
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('')}
+                            >
+                                Xem tất cả dịch vụ 
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('road')}
+                            >
+                                Vận tải đường bộ
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('sea')}
+                            >
+                                Vận tải đường biển
+                            </a>
+                            <br />
+                            <a 
+                                href="#" 
+                                className="text-blue-500 hover:underline" 
+                                onClick={() => setActiveSolution('air')}
+                            >
+                                Vận tải hàng không
+                            </a>
+                        </div>
                     </>
                 );
             default:
                 return (
-                    <div>
-                        <div className="">
-                            <Image 
-                                src="/logistic.png" 
-                                alt="Tổng quan vận chuyển"
-                                className="w-full rounded-lg"
-                                width={500}
-                                height={300}
-                            />
-                        </div>
-                        <div className="w-full">
-                            <div className="text-2xl font-bold my-4 text-indigo-700">
-                                {t.overview.title}
-                            </div>
-                            <p className="mb-4">
-                                {t.overview.description}
-                            </p>
-                            <div className="space-y-6 p-4 roboto-thin">
-                                <div>
-                                    <h3 className="font-semibold text-lg mb-2">{t.overview.services.road.title}</h3>
-                                    <p className="text-gray-600 ml-4">
-                                        - {t.overview.services.road.description}
-                                    </p>
+                    <div className="flex flex-col">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {solutions.map((solution) => (
+                                <div key={solution.id} className="border rounded-lg p-4 bg-gray-100">
+                                    <img src={solution.image} alt={solution.label} className="w-full h-32 object-cover rounded" />
+                                    <h3 className="font-semibold text-lg mt-2">{solution.label}</h3>
+                                    <p className="text-gray-600">{solution.description}</p>
+                                    <button 
+                                        className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                                        onClick={() => {
+                                            setActiveSolution(activeSolution === solution.id ? '' : solution.id); // Toggle nội dung
+                                        }}
+                                    >
+                                        Tìm hiểu
+                                    </button>
+                                    {activeSolution === solution.id && (
+                                        <div className="mt-2">
+                                            {solution.content}
+                                        </div>
+                                    )}
                                 </div>
-                                <div>
-                                    <h3 className="font-semibold text-lg mb-2">{t.overview.services.sea.title}</h3>
-                                    <p className="text-gray-600 ml-4">
-                                        - {t.overview.services.sea.description}
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="font-semibold text-lg mb-2">{t.overview.services.air.title}</h3>
-                                    <p className="text-gray-600 ml-4">
-                                        - {t.overview.services.air.description}
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="font-semibold text-lg mb-2">{t.overview.services.multimodal.title}</h3>
-                                    <p className="text-gray-600 ml-4">
-                                        - {t.overview.services.multimodal.description}
-                                    </p>
-                                </div>
-                                <div className="mt-6">
-                                    <h3 className="font-semibold text-lg mb-2">{t.advantages.title}</h3>
-                                    <ul className="list-disc ml-6 space-y-2 text-gray-600">
-                                        {t.LogAdvantages.items.map((item, index) => (
-                                            <li key={index}>{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                                    <p className="text-blue-700">
-                                        {t.menuPrompt}
-                                    </p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
             );
         }
     };
-
     return (
         <div>
             <div 
@@ -432,78 +761,17 @@ const LogisticPage = () => {
                 </div>
             </div>
 
-            <div className="flex flex-col md:flex-row min-h-screen">
-                
-                {/* Sidebar Navigation */}
-                <nav className="w-full md:w-64 bg-gray-200 p-4 shadow-md">
-                    {/* Mobile Toggle Button */}
-                    <div className="flex md:hidden justify-start items-center mb-4 gap-4">
-                        <button 
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="p-2 rounded-md hover:bg-gray-300"
-                        >
-                            {isMobileMenuOpen ? t.navigation.mobileMenu.close : t.navigation.mobileMenu.open}
-                        </button>
-                        <h2 className="font-bold">{t.navigation.title}</h2>
-                    </div>
-
-                    {/* Desktop Title */}
-                    <h2 className="hidden md:block font-bold mb-4">{t.navigation.title}</h2>
-
-                    {/* Menu Items */}
-                    <ul className={`space-y-2 ${isMobileMenuOpen ? 'block' : 'hidden md:block'}`}>
-                        {solutions.map((solution) => (
-                            <li key={solution.id}>
-                                <div
-                                    className={`flex items-center cursor-pointer p-2 rounded-md ${
-                                        activeSolution === solution.id ? 'bg-blue-500 text-white' : 'hover:bg-gray-200'
-                                    }`}
-                                    onClick={() => {
-                                        setActiveSolution(solution.id);
-                                        setActiveSubSolution('');
-                                        // Chỉ đóng menu mobile khi click vào các mục không có submenu
-                                        if (!solution.subCategories) {
-                                            setIsMobileMenuOpen(false);
-                                        }
-                                    }}
-                                >
-                                    {solution.icon}
-                                    {solution.label}
-                                </div>
-                                {solution.subCategories && activeSolution === solution.id && (
-                                    <ul className="ml-4 mt-2 space-y-2">
-                                        {solution.subCategories.map((subCat) => (
-                                            <li
-                                                key={subCat.id}
-                                                className={`flex items-center cursor-pointer p-2 rounded-md ${
-                                                    activeSubSolution === subCat.id ? 'bg-blue-500 text-white' : 'hover:bg-gray-200'
-                                                }`}
-                                                onClick={() => {
-                                                    setActiveSubSolution(subCat.id);
-                                                    setIsMobileMenuOpen(false); // Đóng menu khi chọn submenu
-                                                }}
-                                            >
-                                                {subCat.icon}
-                                                {subCat.label}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
+            
 
                 {/* Content Area */}
                 <div className="flex-1 p-4 bg-white border-l border-gray-300">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col md:flex-row gap-6">
+                        <div className="">
                             {renderContent()}
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

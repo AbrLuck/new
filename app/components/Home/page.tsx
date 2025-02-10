@@ -54,89 +54,8 @@ const Homepage = () => {
                 </div>
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-[1fr_0fr] md:grid-cols-[2fr_1fr] lg:grid-cols-[3fr_1fr] px-5 py-20'>
-                <div className="method p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                    <h2 className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 border-b-4 w-fit border-blue-800">
-                        {t.transportMethods}
-                    </h2>
-                    <div className="flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <Image 
-                            src="/truck-image.png" 
-                            alt={t.roadTransport.title} 
-                            className="w-full h-60 rounded-2xl mb-2" 
-                            width={500}
-                            height={300}
-                        />
-                        <FaTruck className="mr-2 text-blue-500" />
-                        <strong className='text-orange-400 text-xl'>{t.roadTransport.title}</strong>
-                        <p>{t.roadTransport.desc}</p>
-                        <div className="flex-grow" />
-                        <Link href="/service/logistic?category=transport&subCategory=road" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
-                            {t.learnMore}
-                        </Link>
-                    </div>
-                    <div className="flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <Image 
-                            src="/ship-image.png" 
-                            alt={t.seaTransport.title} 
-                            className="w-full h-60 rounded-2xl mb-2" 
-                            width={500}
-                            height={300}
-                        />
-                        <FaShip className="mr-2 text-blue-500" />
-                        <strong className='text-orange-400 text-xl'>{t.seaTransport.title}</strong>
-                        <p>{t.seaTransport.desc}</p>
-                        <div className="flex-grow" />
-                        <Link href="/service/logistic?category=transport&subCategory=sea" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
-                            {t.learnMore}
-                        </Link>
-                    </div>
-                    <div className="flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <Image 
-                            src="/plane-image.png" 
-                            alt={t.airTransport.title} 
-                            className="w-full h-60 mb-2 rounded-2xl" 
-                            width={500}
-                            height={300}
-                        />
-                        <FaPlane className="mr-2 text-blue-500" />
-                        <strong className='text-orange-400 text-xl'>{t.airTransport.title}</strong>
-                        <p>{t.airTransport.desc}</p>
-                        <div className="flex-grow" />
-                        <Link href="/service/logistic?category=transport&subCategory=air" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
-                            {t.learnMore}
-                        </Link>
-                    </div>
-                    <h2 className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 border-b-4 w-fit border-blue-800 pt-40" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
-                        {t.logistics}
-                    </h2>
-                    <div className="p-5 flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <FaCalculator className="text-4xl text-blue-500 my-4" />
-                        <strong className='text-orange-400 text-xl'>{t.freight.title}</strong>
-                        <p>{t.freight.desc}</p>
-                        <div className="flex-grow" />
-                        <Link href="/service/logistic?category=freight" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
-                            {t.learnMore}
-                        </Link>
-                    </div>
-                    <div className="p-5 flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <FaFileContract className="text-4xl text-blue-500 my-4" />
-                        <strong className='text-orange-400 text-xl'>{t.customs.title}</strong>
-                        <p>{t.customs.desc}</p>
-                        <div className="flex-grow" />
-                        <Link href="/service/logistic?category=customs" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
-                            {t.learnMore}
-                        </Link>
-                    </div>
-                    <div className="p-5 flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <FaWarehouse className="text-4xl text-blue-500 my-4" />
-                        <strong className='text-orange-400 text-xl'>{t.warehouse.title}</strong>
-                        <p>{t.warehouse.desc}</p>
-                        <div className="flex-grow" />
-                        <Link href="/service/logistic?category=warehouse" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
-                            {t.learnMore}
-                        </Link>
-                    </div>
-                    <h2 className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 border-b-4 w-fit border-blue-800 pt-40" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                <div className="method p-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">                    
+                <h2 className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 border-b-4 w-fit border-blue-800 pt-40" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
                         {t.tradingIndustries}
                     </h2>
                     <div className="grid grid-cols-1 gap-4 col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
@@ -189,6 +108,36 @@ const Homepage = () => {
                                 </div>
                             </div>
                         ))}
+                    </div>
+                    <h2 className="col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-3 border-b-4 w-fit border-blue-800" data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
+                        {t.logistics}
+                    </h2>
+                    <div className="p-5 flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
+                        <FaCalculator className="text-4xl text-blue-500 my-4" />
+                        <strong className='text-orange-400 text-xl'>{t.freight.title}</strong>
+                        <p>{t.freight.desc}</p>
+                        <div className="flex-grow" />
+                        <Link href="/service/logistic?category=freight" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
+                            {t.learnMore}
+                        </Link>
+                    </div>
+                    <div className="p-5 flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
+                        <FaFileContract className="text-4xl text-blue-500 my-4" />
+                        <strong className='text-orange-400 text-xl'>{t.customs.title}</strong>
+                        <p>{t.customs.desc}</p>
+                        <div className="flex-grow" />
+                        <Link href="/service/logistic?category=customs" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
+                            {t.learnMore}
+                        </Link>
+                    </div>
+                    <div className="p-5 flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
+                        <FaWarehouse className="text-4xl text-blue-500 my-4" />
+                        <strong className='text-orange-400 text-xl'>{t.warehouse.title}</strong>
+                        <p>{t.warehouse.desc}</p>
+                        <div className="flex-grow" />
+                        <Link href="/service/logistic?category=warehouse" className="inline-flex items-center mt-4 px-4 py-2 rounded-3xl bg-gray-200 border border-orange-400 hover:bg-orange-400 hover:text-white hover:text-[18px] transition-all duration-500">
+                            {t.learnMore}
+                        </Link>
                     </div>
                 </div>
                 <div className="contact p-5" data-aos="fade-left" data-aos-duration="1000" data-aos-once="true">
