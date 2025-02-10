@@ -42,7 +42,13 @@ const Homepage = () => {
         <React.Fragment>
             <div className="slider max-h-[90vh] relative">
                 <div className="slides relative w-full max-h-[85vh]">
-                    <img src={slides[currentSlide].src} alt={slides[currentSlide].alt} className="w-full object-cover max-h-[35vh] sm:max-h-[50vh] md:max-h-[65vh] lg:max-h-[90vh]" />
+                    <Image 
+                        src={slides[currentSlide].src} 
+                        alt={slides[currentSlide].alt} 
+                        className="w-full object-cover max-h-[35vh] sm:max-h-[50vh] md:max-h-[65vh] lg:max-h-[90vh]" 
+                        width={500}
+                        height={300}
+                    />
                     <button onClick={prevSlide} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2">❮</button>
                     <button onClick={nextSlide} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2">❯</button>
                 </div>
@@ -53,7 +59,13 @@ const Homepage = () => {
                         {t.transportMethods}
                     </h2>
                     <div className="flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <img src="/truck-image.png" alt={t.roadTransport.title} className="w-full h-60 rounded-2xl mb-2" />
+                        <Image 
+                            src="/truck-image.png" 
+                            alt={t.roadTransport.title} 
+                            className="w-full h-60 rounded-2xl mb-2" 
+                            width={500}
+                            height={300}
+                        />
                         <FaTruck className="mr-2 text-blue-500" />
                         <strong className='text-orange-400 text-xl'>{t.roadTransport.title}</strong>
                         <p>{t.roadTransport.desc}</p>
@@ -63,7 +75,13 @@ const Homepage = () => {
                         </Link>
                     </div>
                     <div className="flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <img src="/ship-image.png" alt={t.seaTransport.title} className="w-full h-60 rounded-2xl mb-2" />
+                        <Image 
+                            src="/ship-image.png" 
+                            alt={t.seaTransport.title} 
+                            className="w-full h-60 rounded-2xl mb-2" 
+                            width={500}
+                            height={300}
+                        />
                         <FaShip className="mr-2 text-blue-500" />
                         <strong className='text-orange-400 text-xl'>{t.seaTransport.title}</strong>
                         <p>{t.seaTransport.desc}</p>
@@ -73,7 +91,13 @@ const Homepage = () => {
                         </Link>
                     </div>
                     <div className="flex flex-col bg-gray-200 items-center border border-gray-300 p-2 rounded-2xl hover:translate-y-[-10px]">
-                        <img src="/plane-image.png" alt={t.airTransport.title} className="w-full h-60 mb-2 rounded-2xl" />
+                        <Image 
+                            src="/plane-image.png" 
+                            alt={t.airTransport.title} 
+                            className="w-full h-60 mb-2 rounded-2xl" 
+                            width={500}
+                            height={300}
+                        />
                         <FaPlane className="mr-2 text-blue-500" />
                         <strong className='text-orange-400 text-xl'>{t.airTransport.title}</strong>
                         <p>{t.airTransport.desc}</p>

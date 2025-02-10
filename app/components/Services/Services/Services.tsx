@@ -1,8 +1,10 @@
 'use client'
 
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { FaTruck, FaShip, FaPlane, FaFlask, FaSeedling, FaCarrot } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface Category {
     id: string;
@@ -45,10 +47,12 @@ const ServicePage = () => {
                     <div className="flex gap-6">
                         <div className="w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/transportation.jpg" 
                                     alt="Vận tải đường bộ"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -70,10 +74,12 @@ const ServicePage = () => {
                     <div className="flex gap-6">
                         <div className="w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/shipping.jpg" 
                                     alt="Vận tải đường biển"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -94,10 +100,12 @@ const ServicePage = () => {
                     <div className="flex gap-6">
                         <div className="w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/flight.jpg" 
                                     alt="Vận tải đường hàng không"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -119,10 +127,12 @@ const ServicePage = () => {
                     <div className="flex gap-6">
                         <div className="w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/chemicals.jpg" 
                                     alt="Hóa chất"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -143,10 +153,12 @@ const ServicePage = () => {
                     <div className="flex gap-6">
                         <div className="w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/fertilizers.jpg" 
                                     alt="Phân bón"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -167,10 +179,12 @@ const ServicePage = () => {
                     <div className="flex gap-6">
                         <div className="w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/feed.jpg" 
                                     alt="Nguyên liệu thức ăn chăn nuôi"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -275,4 +289,12 @@ const ServicePage = () => {
     );
 };
 
-export default ServicePage;
+const ServicePageWrapper = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ServicePage />
+        </Suspense>
+    );
+};
+
+export default ServicePageWrapper;

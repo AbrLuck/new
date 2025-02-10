@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "nodemon src/index.js"
+    "server": "nodemon src/index.js",
+    "export": "next export"
   },
   "dependencies": {
     "aos": "^2.3.4",

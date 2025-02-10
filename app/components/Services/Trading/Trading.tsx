@@ -1,10 +1,12 @@
 'use client'
 
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { FaFlask, FaSeedling, FaCarrot } from 'react-icons/fa';
 import { useLanguage } from '@/app/layout/LanguageContext';
 import { tradingTranslations } from '@/app/translations/index';
+import Image from 'next/image';
 
 interface Industry {
     id: string;
@@ -41,10 +43,12 @@ const TradingPage = () => {
                     <>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/chemicals.jpg" 
                                     alt={t.industries.chemicals.label}
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -64,10 +68,12 @@ const TradingPage = () => {
                     <>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/fertilizers.jpg" 
                                     alt={t.industries.fertilizers.label}
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -87,10 +93,12 @@ const TradingPage = () => {
                     <>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/feed.jpg" 
                                     alt={t.industries.feed.label}
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -109,10 +117,12 @@ const TradingPage = () => {
                 return (
                     <div>
                         <div className="">
-                            <img 
+                            <Image 
                                 src="/industry.png" 
                                 alt={t.overview.title}
                                 className="w-full rounded-lg"
+                                width={500}
+                                height={300}
                             />
                         </div>
                         <div className="w-full">
@@ -239,4 +249,12 @@ const TradingPage = () => {
     );
 }
 
-export default TradingPage;
+const TradingPageWrapper = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <TradingPage />
+        </Suspense>
+    );
+};
+
+export default TradingPageWrapper;

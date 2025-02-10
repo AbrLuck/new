@@ -1,6 +1,7 @@
 'use client'
 import { useLanguage } from '@/app/layout/LanguageContext';
 import { newsTranslations } from '@/app/translations/index';
+import Image from 'next/image';
 
 export default function News() {
     const { language } = useLanguage();
@@ -22,10 +23,12 @@ export default function News() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-5">
                     {[1, 2, 3].map((item) => (
                         <div key={`logistics-${item}`} className="bg-gray-200 rounded-lg shadow-md overflow-hidden">
-                            <img 
+                            <Image 
                                 src="/logistics-news.jpg" 
-                                alt={`${t.sections.logistics.newsItem.altText} ${item}`}
+                                alt={`Logistics news ${item}`}
                                 className="w-full h-48 object-cover"
+                                width={500}
+                                height={300}
                             />
                             <div className="p-4">
                                 <h3 className="font-bold mb-2">{t.sections.logistics.newsItem.title} {item}</h3>
@@ -42,10 +45,12 @@ export default function News() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-5">
                     {[1, 2, 3].map((item) => (
                         <div key={`trading-${item}`} className="bg-gray-200 rounded-lg shadow-md overflow-hidden">
-                            <img 
+                            <Image 
                                 src="/trading-news.jpg" 
                                 alt={`${t.sections.trading.newsItem.altText} ${item}`}
                                 className="w-full h-48 object-cover"
+                                width={500}
+                                height={300}
                             />
                             <div className="p-4">
                                 <h3 className="font-bold mb-2">{t.sections.trading.newsItem.title} {item}</h3>
@@ -62,10 +67,12 @@ export default function News() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-5">
                     {[1, 2, 3].map((item) => (
                         <div key={`general-${item}`} className="bg-gray-200 rounded-lg shadow-md overflow-hidden">
-                            <img 
+                            <Image 
                                 src="/general-news.jpg" 
                                 alt={`${t.sections.general.newsItem.altText} ${item}`}
                                 className="w-full h-48 object-cover"
+                                width={500}
+                                height={300}
                             />
                             <div className="p-4">
                                 <h3 className="font-bold mb-2">{t.sections.general.newsItem.title} {item}</h3>

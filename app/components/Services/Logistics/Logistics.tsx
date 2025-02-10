@@ -1,10 +1,12 @@
 'use client'
 
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { FaTruck, FaShip, FaPlane, FaExchangeAlt, FaCalculator, FaFileContract, FaWarehouse } from 'react-icons/fa';
 import { useLanguage } from '@/app/layout/LanguageContext';
 import { logisticsTranslations } from '@/app/translations/index';
+import Image from 'next/image';
 
 interface SolutionCategory {
     id: string;
@@ -61,10 +63,12 @@ const LogisticPage = () => {
                             <>
                                 <div className="w-full md:w-1/3">
                                     <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <img 
+                                        <Image 
                                             src="/images/road-transport.jpg" 
                                             alt="Vận tải đường bộ"
                                             className="w-full h-full object-cover rounded-lg"
+                                            width={500}
+                                            height={300}
                                         />
                                     </div>
                                 </div>
@@ -86,10 +90,12 @@ const LogisticPage = () => {
                             <>
                                 <div className="w-full md:w-1/3">
                                     <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <img 
+                                        <Image 
                                             src="/images/sea-transport.jpg" 
                                             alt="Vận tải đường biển"
                                             className="w-full h-full object-cover rounded-lg"
+                                            width={500}
+                                            height={300}
                                         />
                                     </div>
                                 </div>
@@ -112,10 +118,12 @@ const LogisticPage = () => {
                             <>
                                 <div className="w-full md:w-1/3">
                                     <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <img 
+                                        <Image 
                                             src="/images/air-transport.jpg" 
                                             alt="Vận tải đường hàng không"
                                             className="w-full h-full object-cover rounded-lg"
+                                            width={500}
+                                            height={300}
                                         />
                                     </div>
                                 </div>
@@ -139,10 +147,12 @@ const LogisticPage = () => {
                             <>
                                 <div className="w-full md:w-1/3">
                                     <div className="aspect-square bg-gray-200 rounded-lg">
-                                        <img 
+                                        <Image 
                                             src="/images/multimodal-transport.jpg" 
                                             alt="Vận tải đa phương thức"
                                             className="w-full h-full object-cover rounded-lg"
+                                            width={500}
+                                            height={300}
                                         />
                                     </div>
                                 </div>
@@ -166,10 +176,12 @@ const LogisticPage = () => {
                         return (
                             <div>
                                 <div className="">
-                                    <img 
+                                    <Image 
                                         src="/solutions.png" 
                                         alt="Tổng quan vận chuyển"
                                         className="w-full rounded-lg"
+                                        width={500}
+                                        height={300}
                                     />
                                 </div>
                                 <div className="w-full">
@@ -227,10 +239,12 @@ const LogisticPage = () => {
                     <>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/freight.jpg" 
                                     alt="Cước tàu/máy bay"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -252,10 +266,12 @@ const LogisticPage = () => {
                     <>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/customs.jpg" 
                                     alt="Thông quan hải quan"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -279,10 +295,12 @@ const LogisticPage = () => {
                     <>
                         <div className="w-full md:w-1/3">
                             <div className="aspect-square bg-gray-200 rounded-lg">
-                                <img 
+                                <Image 
                                     src="/images/warehouse.jpg" 
                                     alt="Dịch vụ kho bãi"
                                     className="w-full h-full object-cover rounded-lg"
+                                    width={500}
+                                    height={300}
                                 />
                             </div>
                         </div>
@@ -308,10 +326,12 @@ const LogisticPage = () => {
                 return (
                     <div>
                         <div className="">
-                            <img 
+                            <Image 
                                 src="/logistic.png" 
                                 alt="Tổng quan vận chuyển"
                                 className="w-full rounded-lg"
+                                width={500}
+                                height={300}
                             />
                         </div>
                         <div className="w-full">
@@ -487,4 +507,12 @@ const LogisticPage = () => {
     );
 }
 
-export default LogisticPage;
+const LogisticPageWrapper = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <LogisticPage />
+        </Suspense>
+    );
+};
+
+export default LogisticPageWrapper;
